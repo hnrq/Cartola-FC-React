@@ -12,8 +12,7 @@ export default class Roster extends React.Component {
     async componentDidMount() {
         try {
             var fetchedData = await this.fetchRoster();
-            fetchedData = fetchedData.atletas.filter((atleta) => atleta.clube_id === this.props.clubeId).sort((a1,a2) => a1.posicao_id > a2.posicao_id);
-            console.log(fetchedData);
+            fetchedData = fetchedData.atletas.filter((atleta) => atleta.clube_id === this.props.clubeId).sort((a1,a2) => a1.posicao_id - a2.posicao_id);
             this.setState({players: fetchedData});
         } catch (error) {
             console.warn(error);
