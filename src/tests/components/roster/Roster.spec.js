@@ -8,7 +8,7 @@ import '../../test.setup';
 describe("Roster tests section", () => {
     it("should fetch players data from CartolaFC's server and filter by the specific team.", done => {
         // prepare
-        const mockSuccessResponse = {"players":[{            
+        const mockSuccessResponse = {"atletas":[{            
                 "nome": "Fábio Deivson Lopes Maciel",
                 "slug": "fabio",
                 "apelido": "Fábio",
@@ -39,7 +39,7 @@ describe("Roster tests section", () => {
         const wrapper = shallow(<Roster clubeId={283}/>);
         
         expect(global.fetch).toHaveBeenCalledTimes(1);
-        expect(global.fetch).toHaveBeenCalledWith('https://api.cartolafc.globo.com/atletas/mercado');
+        expect(global.fetch).toHaveBeenCalledWith('/api/atletas/mercado');
 
         process.nextTick(() => { // Ensuring that the functions queued before are completed.
             expect(wrapper.state().players).toEqual([{            

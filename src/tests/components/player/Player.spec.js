@@ -15,7 +15,7 @@ describe('Player tests section', () => {
 
     it("should have the player's info passed as props.",()=>{
         // prepare
-        const wrapper = shallow(<Player nome="Alex"/>);
+        const wrapper = shallow(<Player apelido="Alex"/>);
         // execution
         expect(wrapper.find("h1").text()).toBe("Alex");
     });

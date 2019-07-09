@@ -12,7 +12,7 @@ describe("Team tests section", () => {
         const wrapper = shallow(<Team escudo={shieldSrc} nome={"Cruzeiro"}/>);
         // execution
         expect(wrapper.find("img").prop("src")).toEqual(shieldSrc);
-        expect(wraper.find("h1").text()).toBe("Cruzeiro");
+        expect(wrapper.find("h1").text()).toBe("Cruzeiro");
     });
 
     it("should have one Roster component", () => {
@@ -20,6 +20,13 @@ describe("Team tests section", () => {
         const wrapper = shallow(<Team/>);
         // execution
         expect(wrapper.find(Roster)).toHaveLength(1);
+    });
+
+    it("should pass club ID prop as a prop to Roster", () => {
+        // prepare
+        const wrapper = shallow(<Team clubeId={283}/>);
+        // execution
+        expect(wrapper.find(Roster).prop('clubeId')).toBe(283);
     });
 
     it("should be mounted collapsed by default", () => {
@@ -34,8 +41,8 @@ describe("Team tests section", () => {
         const wrapper = shallow(<Team/>);
         // execution
         wrapper.simulate('click',{});
-        expect(wrapper.getState().collapse).toBe(false);
+        expect(wrapper.state().collapsed).toBe(false);
         wrapper.simulate('click',{});
-        expect(wrapper.getState().collapse).toBe(true);
+        expect(wrapper.state().collapsed).toBe(true);
     });
 });
