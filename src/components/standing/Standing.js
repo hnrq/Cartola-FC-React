@@ -31,7 +31,7 @@ export default class Standing extends React.Component{
         if(teams)
             teams = Object.values(teams).filter((team) => team.posicao).sort((team1, team2) => team1.posicao - team2.posicao);
         if(searchCriteria.length > 0)
-            teams = teams.filter((team) => team.nome.includes(searchCriteria));
+            teams = teams.filter((team) => team.nome.toLowerCase().includes(searchCriteria.toLowerCase()));
         return(
             <div className="container">
                 <input className="searchbar" placeholder="filter team by name..." value={this.state.searchCriteria} onChange={this.handleChangeSearchCriteria}/>
