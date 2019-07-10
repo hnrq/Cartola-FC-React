@@ -38,8 +38,9 @@ describe("Roster tests section", () => {
         // execution
         const wrapper = shallow(<Roster clubeId={283}/>);
         
+        const abortController = new AbortController(); 
         expect(global.fetch).toHaveBeenCalledTimes(1);
-        expect(global.fetch).toHaveBeenCalledWith('/api/atletas/mercado');
+        expect(global.fetch).toHaveBeenCalledWith('/api/atletas/mercado', {signal: abortController.signal});
 
         process.nextTick(() => { // Ensuring that the functions queued before are completed.
             expect(wrapper.state().players).toEqual([{            

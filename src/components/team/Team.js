@@ -21,7 +21,7 @@ export default class Team extends React.Component {
                     <img className="escudo" alt="escudo" src={escudo}/>
                     <h1 className="team-name">{nome}</h1>
                 </div>
-                <Roster collapse={collapsed} clubeId={clubeId}/>
+                <Roster key={clubeId} collapse={collapsed} clubeId={clubeId}/>
             </div>
         );
     }
